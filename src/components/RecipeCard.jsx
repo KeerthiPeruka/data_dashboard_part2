@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function RecipeCard({recipe}){
-    const { title, image, readyInMinutes, servings, sourceUrl, minCalories} = recipe;
-    
-    return (
-        <div className = "recipe-card">
-            <img src = {image} alt={title}/>
-            <h2> {title} </h2>
-            </div>
-    );
+function RecipeCard({ recipe }) {
+  const { id, title, image } = recipe;
+
+  return (
+    <Link to={`/recipe/${id}`} className="recipe-card">
+      <img src={image} alt={title} />
+      <h2>{title}</h2>
+    </Link>
+  );
 }
 
 export default RecipeCard;

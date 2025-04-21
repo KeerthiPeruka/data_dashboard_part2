@@ -3,6 +3,10 @@ import './App.css'
 import Header from './components/Header';
 import RecipeCard from './components/RecipeCard';
 import SearchBar from './components/SearchBar';
+import { Routes, Route } from 'react-router-dom';
+import RecipeDetail from './components/RecipeDetail';
+import RecipeCharts from './components/RecipeCharts';
+
 
 function App(){
   const [recipes, setRecipes] = useState([]);
@@ -14,7 +18,7 @@ function App(){
   useEffect(() => {
     const fetchRecipes = async () => {
       try{
-        const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${API_KEY}`);
+        const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${API_KEY}&addRecipeInformation=true`);
         if(!response.ok) throw new Error('Recipes not found');
         const data = await response.json();
 
@@ -34,21 +38,29 @@ function App(){
 
 
   return (
-    <div className = "App">
+    <div className="App">
       <Header />
-      <div className = "dashboard">
-        <SearchBar setQuery = {setQuery} />
-        <div className="summary-stats">
-          <p>Total Recipes: {totalItems}</p>
-        </div>
-        <div className = "recipe-list">
-          {recipes.length > 0 ? (
-            recipes.map((recipe) => <RecipeCard key={recipe.id} recipe={recipe} />)
-            ) : (
-              <p>No recipes to display</p>
-          )}
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={
+          <div className="dashboard">
+            <SearchBar setQuery={setQuery} />
+            <div className="summary-stats">
+              <p>Total Recipes: {totalItems}</p>
+            </div>
+            <RecipeCharts recipes={recipes} />
+            <div className="recipe-list">
+              {recipes.length > 0 ? (
+                recipes.map((recipe) => (
+                  <RecipeCard key={recipe.id} recipe={recipe} />
+                ))
+              ) : (
+                <p>{error}</p>
+              )}
+            </div>
+          </div>
+        } />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+      </Routes>
     </div>
   );
 }
