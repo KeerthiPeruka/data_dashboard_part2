@@ -24,7 +24,7 @@ The following **required** functionality is completed:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough :
 
 <img src="https://i.postimg.cc/RZ8y2F9K/dashboard.gif" alt="Video Walkthrough" />
 (https://i.postimg.cc/RZ8y2F9K/dashboard.gif)
