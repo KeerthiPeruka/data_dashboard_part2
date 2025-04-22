@@ -26,4 +26,5 @@ The following **required** functionality is completed:
 
 Here's a walkthrough of implemented user stories:
 
-<img src="https://i.postimg.cc/RZ8y2F9K/dashboard.gif" title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src="https://i.postimg.cc/RZ8y2F9K/dashboard.gif" title="Video Walkthrough" alt="Video Walkthrough" />
+
